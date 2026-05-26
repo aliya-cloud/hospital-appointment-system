@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MediCare — Appointments</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <span class="logo-cross">✚</span>
+      <span class="logo-text">MediCare</span>
+    </div>
+    <nav>
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="doctors.html" class="nav-link">Doctors</a>
+      <a href="appointments.html" class="nav-link active">Appointments</a>
+    </nav>
+  </header>
+
+  <div class="page-hero">
+    <h1>Book an <em>Appointment</em></h1>
+    <p>Fill in the form below to schedule your visit.</p>
+  </div>
+
+  <section class="section appt-layout">
+
+    <!-- BOOKING FORM -->
+    <div class="form-card">
+      <h2 class="form-title">New Appointment</h2>
+
+      <div class="form-group">
+        <label>Patient Name</label>
+        <input type="text" id="patientName" placeholder="e.g., Rahul Sharma"/>
+      </div>
+      <div class="form-group">
+        <label>Age</label>
+        <input type="number" id="patientAge" placeholder="e.g., 28" min="1"/>
+      </div>
+      <div class="form-group">
+        <label>Gender</label>
+        <select id="patientGender">
+          <option value="">Select</option>
+          <option>Male</option>
+          <option>Female</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Contact Number</label>
+        <input type="tel" id="contactNum" placeholder="e.g., 9876543210"/>
+      </div>
+      <div class="form-group">
+        <label>Department</label>
+        <select id="department" onchange="updateDoctors()">
+          <option value="">Select Department</option>
+          <option>Cardiology</option>
+          <option>Neurology</option>
+          <option>Dentistry</option>
+          <option>Ophthalmology</option>
+          <option>Orthopedics</option>
+          <option>Pathology</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Doctor</label>
+        <select id="doctorSelect">
+          <option value="">Select Department First</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Appointment Date</label>
+        <input type="date" id="apptDate"/>
+      </div>
+      <div class="form-group">
+        <label>Time Slot</label>
+        <select id="timeSlot">
+          <option value="">Select Time</option>
+          <option>09:00 AM</option>
+          <option>10:00 AM</option>
+          <option>11:00 AM</option>
+          <option>12:00 PM</option>
+          <option>02:00 PM</option>
+          <option>03:00 PM</option>
+          <option>04:00 PM</option>
+          <option>05:00 PM</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Reason / Symptoms</label>
+        <textarea id="reason" placeholder="Briefly describe your symptoms..."></textarea>
+      </div>
+
+      <button class="btn-primary full-width" onclick="bookAppointment()">Book Appointment</button>
+    </div>
+
+    <!-- APPOINTMENTS TABLE -->
+    <div class="appt-list">
+      <div class="appt-list-header">
+        <h2 class="form-title">All Appointments</h2>
+        <div class="summary-chips">
+          <span class="chip total" id="chipTotal">Total: 0</span>
+          <span class="chip confirmed" id="chipConfirmed">Confirmed: 0</span>
+          <span class="chip cancelled" id="chipCancelled">Cancelled: 0</span>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table id="apptTable">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Patient</th>
+              <th>Doctor</th>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Department</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="apptBody">
+          </tbody>
+        </table>
+        <p class="empty-msg" id="emptyMsg">No appointments booked yet.</p>
+      </div>
+    </div>
+
+  </section>
+
+  <footer>
+    <p>© 2025 MediCare Hospital Management System &nbsp;|&nbsp; Nikhil Venkat Jadhav &nbsp;|&nbsp; PRN: 2445100708</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Set min date to today
+    document.getElementById('apptDate').min = new Date().toISOString().split('T')[0];
+    renderAppointments();
+  </script>
+</body>
+</html>
