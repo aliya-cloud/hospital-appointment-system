@@ -1,6 +1,6 @@
 // ============================================================
 //  MediCare — Hospital Appointment Manager
-//  script.js  |  Nikhil Venkat Jadhav | PRN: 2445100708
+//  script.js  |  Alam Nashra Altaf Tamboli | PRN: 2445103198
 // ============================================================
 
 // ── DATA ─────────────────────────────────────────────────────
